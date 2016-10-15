@@ -14,6 +14,7 @@ RUN wget -q -O - http://opendylan.org/downloads/opendylan/${DYLAN_VERSION}/opend
  && mkdir -p ${DYLAN_INSTALL} \
  && mv opendylan-${DYLAN_VERSION} ${DYLAN_INSTALL}
 
-ENV PATH ${DYLAN_INSTALL}/opendylan-${DYLAN_VERSION}/bin:$PATH
+WORKDIR /usr/src/app
 
-WORKDIR /root
+ENV PATH=${DYLAN_INSTALL}/opendylan-${DYLAN_VERSION}/bin:$PATH \
+    OPEN_DYLAN_USER_REGISTRIES=/usr/src/app/registry
